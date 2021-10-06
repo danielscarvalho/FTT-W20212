@@ -99,7 +99,8 @@ public class User {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 		
 		try {
-			this.setUserDOB(dateFormat.parse(userDOB));
+			if (userDOB != null)
+				this.setUserDOB(dateFormat.parse(userDOB));
 		//} catch (ParseException e) {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -143,7 +144,10 @@ public class User {
 	 * @param userCep the userCep to set
 	 */
 	public void setUserCep(String userCep) {
-		this.userCep = userCep.replace("-", "");
+		
+		if (userCep != null)
+			this.userCep = userCep.replace("-", "");
+	
 	}
 
 	/**
