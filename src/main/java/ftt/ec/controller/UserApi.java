@@ -96,7 +96,6 @@ public class UserApi extends HttpServlet {
 				request.getParameter("upwd")				
 				);
 		
-		
 		UserDao userDao = new UserDao();
 		
 		userDao.add(u);

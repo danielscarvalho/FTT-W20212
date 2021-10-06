@@ -51,6 +51,7 @@ public class UserDao {
             while (rs.next()) {
                 
                 user.setUserId(rs.getString("ID"));
+                user.setUserName(rs.getString("NAME"));
                 user.setUserEmail(rs.getString("EMAIL"));
                 user.setUserTelefone(rs.getString("PHONE"));
                 user.setUserDOB(rs.getString("DOB"));
@@ -110,12 +111,12 @@ public class UserDao {
 			
             PreparedStatement preparedStatement = connection
                     .prepareStatement("INSERT INTO ftt.USER (NAME, EMAIL, PHONE, DOB, COLOR, VALUE, CEP, COPLEMENT, PASSWORD) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            
+
             // Parameters start with 1
             preparedStatement.setString(1, u.getUserName());
             preparedStatement.setString(2, u.getUserEmail());
             preparedStatement.setString(3, u.getUserTelefone());
-            preparedStatement.setDate(4, null);//(java.sql.Date) u.getUserDOB()); //MAGIC - Não tem TIMEZONE no objeto Data do banco de dados...
+            preparedStatement.setDate(4, new java.sql.Date( u.getUserDOB().getTime() )); //MAGIC - Não tem TIMEZONE no objeto Data do banco de dados...
             preparedStatement.setString(5, u.getUserColor());
             preparedStatement.setFloat(6, u.getUserValue());
             preparedStatement.setString(7, u.getUserCep());
@@ -165,7 +166,7 @@ public class UserDao {
             preparedStatement.setString(1, u.getUserName());
             preparedStatement.setString(2, u.getUserEmail());
             preparedStatement.setString(3, u.getUserTelefone());
-            preparedStatement.setDate(4, null);//(java.sql.Date) u.getUserDOB()); //MAGIC - Não tem TIMEZONE no objeto Data do banco de dados...
+            preparedStatement.setDate(4, new java.sql.Date( u.getUserDOB().getTime() )); //MAGIC - Não tem TIMEZONE no objeto Data do banco de dados... //MAGIC - Não tem TIMEZONE no objeto Data do banco de dados...
             preparedStatement.setString(5, u.getUserColor());
             preparedStatement.setFloat(6, u.getUserValue());
             preparedStatement.setString(7, u.getUserCep());
