@@ -156,7 +156,7 @@ public class UserApi extends HttpServlet {
 		
 		userDao.delete(user);
 		
-		response.getWriter().append("User ID " + user.getUserId() + " deleted");
+		response.getWriter().append("User ID ").append(String.valueOf(user.getUserId())).append(" deleted");
 		
 	} //doDelete
 
